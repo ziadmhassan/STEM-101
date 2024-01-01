@@ -121,8 +121,9 @@ export function SignUp(){
   }
 
   return [
-    <h1>Sign Up!</h1>,
+    <h1 key="title">Sign Up!</h1>,
     <TextField
+      key="email"  
       className="textinput"
       required
       label="Email Address"
@@ -130,6 +131,7 @@ export function SignUp(){
       onChange={(event) => setEmail(event.target.value)}
     />,
     <TextField
+      key="password"
       className="textinput"
       required
       label="Password"
@@ -138,6 +140,7 @@ export function SignUp(){
       onChange = {(event) => setPassword(event.target.value)}  
     />,
     <TextField
+      key="passwordconfirm"
       className="textinput"
       required
       label="Confirm Password"
@@ -145,7 +148,7 @@ export function SignUp(){
       autoComplete="current-password"
       onChange = {(event) => setPasswordConfirm(event.target.value)}
     />,
-    <Button variant="contained" className="textinput" onClick={SignUpAuth}>
+    <Button key="submit" variant="contained" className="textinput" onClick={SignUpAuth}>
       Sign Up
     </Button>
   ];
@@ -172,8 +175,9 @@ export function SignIn() {
   }
 
   return [
-    <h1>Sign In!</h1>,
+    <h1 key="title">Sign In!</h1>,
     <TextField
+      key="email"
       className="textinput"
       required
       label="Email Address"
@@ -181,14 +185,15 @@ export function SignIn() {
       onChange={(event) => setEmail(event.target.value)}
     />,
     <TextField
-    className="textinput"
-    required
-    label="Password"
-    type="password"
-    autoComplete="current-password"
-    onChange={(event) => setPassword(event.target.value)}
+      key="password"
+      className="textinput"
+      required
+      label="Password"
+      type="password"
+      autoComplete="current-password"
+      onChange={(event) => setPassword(event.target.value)}
     />,
-    <Button variant="contained" className="textinput" onClick={SingInAuth}>
+    <Button key="submit" variant="contained" className="textinput" onClick={SingInAuth}>
     Sign In
     </Button>
   ];
