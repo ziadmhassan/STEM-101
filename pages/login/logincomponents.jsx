@@ -1,6 +1,6 @@
 "use client";
 import React, { use } from "react";
-import {auth, googleprovider, githubProvider} from '../firebase'
+import {auth, googleprovider, githubProvider} from '../../firebase/firebase'
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider} from "firebase/auth";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
