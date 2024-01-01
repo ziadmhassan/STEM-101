@@ -13,21 +13,40 @@
   justify-content: center;
   align-items: center;
 }
+@media screen and (min-width: 768px) {
+  .form {
+    background-color: lightblue;
+    height: 42.5rem ;
+    width:  30rem;
+    
+    border-radius: 25px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-.form {
-  background-color: lightblue;
-  height: 70%;
-  width:  30%;
-  
-  border-radius: 25px;
-  
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  position: relative;
+    position: relative;
+  }
 }
+
+@media screen and (max-width: 768px) {
+  .form {
+    background-color: lightblue;
+    height: 90% ;
+    width:  80%;
+    
+    border-radius: 25px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+  }
+}
+
 
 .formtop{
   height: 70%;
