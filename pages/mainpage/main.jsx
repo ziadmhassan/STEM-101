@@ -5,6 +5,8 @@ import React, { useState, useEffect, useRef } from "react";
 import '../../src/app/globals.css';
 import { useRouter } from 'next/navigation';
 import { Button } from "@mui/material";
+import { captureImage } from "../../script/script";
+import Result  from "../../script/script";
 
 export default function Home() {  
     const [authUser, setAuthUser] = useState(null)
@@ -22,11 +24,13 @@ export default function Home() {
           }
         })
       })
-    
-    
     return(
         <div className="homepage">
             <ResponsiveAppBar></ResponsiveAppBar>
+            <div className="mainpagebody">
+                <Button onClick={captureImage}>TEST</Button>
+                <Result></Result>
+            </div>
         </div>
     );
 }
