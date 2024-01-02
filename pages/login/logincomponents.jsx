@@ -29,8 +29,8 @@ export function GoogleLogin(){
       // The signed-in user info.
       // const user = result.user;
       // IdP data available using getAdditionalUserInfo(result)
-      writeUserData(result.user.uid, result.user.email, result.user.email, "No City");
-      router.push('./mainpage/roadmap');
+      //writeUserData(result.user.uid, result.user.email, result.user.email, "No City");
+      router.push('./mainpage/main');
     }).catch((error) => {
       // Handle Errors here.
       const errorCode = error.code;
@@ -65,8 +65,8 @@ export function GitHubLogin(){
     signInWithPopup(auth, githubProvider)
     .then((result) => {
       // ...
-    writeUserData(result.user.uid, result.user.email, result.user.email, "No City");  
-    router.push('./mainpage/roadmap');
+      //writeUserData(result.user.uid, result.user.email, result.user.email, "No City");  
+    router.push('./mainpage/main');
   }).catch((error) => {
     // Handle Errors here.
     const errorCode = error.code;
@@ -165,7 +165,7 @@ export function SignIn() {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in 
-        router.push('./mainpage/roadmap');
+        router.push('./mainpage/main');
       })
       .catch((error) => {
         const errorCode = error.code;
