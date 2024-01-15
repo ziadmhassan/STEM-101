@@ -7,20 +7,14 @@ export function captureImage() {
     fetch('http://localhost:5000/trigger_capture')
         .then(response => {
             if (!response.ok) {
-                alert('Network response was not ok: ' + response.statusText);
-                throw new Error('Network response was not ok: ' + response.statusText);
-                
+                throw new Error('Network response was not ok: ' + response.statusText);   
             }
-            alert(response.statusText)
-            alert(response.json())
             return response.json();
-        
         })
         .then(data => {
             // If there's an error, show it in the status div
             if (data.error) {
-                document.getElementById('status').textContent = 'Error: ' + data.error;
-                document.getElementById('status').classList.add('error');
+                throw new Error(data.error);
             } else {
                 // If successful, store the results and redirect to the results page
                 // sessionStorage.setItem('personName', data.name);
@@ -64,7 +58,12 @@ export function captureImage() {
                     <img src={`data:image/jpeg;base64,${captureResult.imageSrc}`} alt="Person" />
                 </>
             ) : (
-                <h1>Error: Person data not available</h1>
+                <label
+                htmlFor="output"
+                style={{ fontFamily: 'Lato', fontSize: '1.5rem' }}
+                >
+                Results are displayed here
+                </label>
             )}
         </div>
     );

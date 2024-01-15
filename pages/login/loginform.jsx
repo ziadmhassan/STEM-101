@@ -2,6 +2,10 @@ import { SignIn, SignUp , GoogleLogin, GitHubLogin} from "./logincomponents";
 import Button from "@mui/material/Button";
 import React from "react";
 
+
+
+
+
 export default function LoginForm() {
 
 const [isSignUp, setIsSignUp] = React.useState(false);

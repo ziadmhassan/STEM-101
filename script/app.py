@@ -1,4 +1,5 @@
 from flask import Flask, render_template, jsonify, request, redirect, url_for
+from flask_cors import CORS
 import requests
 import face_recognition
 import numpy as np
@@ -7,10 +8,12 @@ from io import BytesIO
 import base64
 
 app = Flask(__name__)
+CORS(app)
 
 # Load and encode faces
 # Replace with your actual file paths and ensure at least one image is encoded
 image_of_bishoy = face_recognition.load_image_file("../assets/bishoy.jpg")
+image_of_bishoy2 = BytesIO(Image.open("../assets/bishoy.jpg").tobytes())
 bishoy_face_encoding = face_recognition.face_encodings(image_of_bishoy)[0]
 
 # Populate the known face encodings and their names
@@ -31,7 +34,6 @@ def index():
 def trigger_capture():
     # ESP32-CAM server URL to trigger the capture
     esp_cam_url = "http://<ESP32-CAM-IP-ADDRESS>/capture"
-
     try:
         # Send a request to the ESP32-CAM to capture an image
         response = requests.get(esp_cam_url, stream=True)
@@ -64,14 +66,15 @@ def process_image(image_data):
             break
 
     # Send command to ESP32 to play corresponding sound file
-    play_sound_on_esp(file_number)
+    # play_sound_on_esp(file_number)
 
     # Convert PIL image to base64 for HTML display
     buffered = BytesIO()
     image.save(buffered, format="JPEG")
     img_str = base64.b64encode(buffered.getvalue()).decode()
 
-    return render_template('result.html', name=name, image_data=img_str)
+    #return render_template('result.html', name=name, image_data=img_str)
+    return jsonify({"name": name, "image_data": img_str})
 
 def play_sound_on_esp(file_number):
     # ESP32 endpoint to trigger sound playback

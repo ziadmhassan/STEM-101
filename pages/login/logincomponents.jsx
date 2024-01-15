@@ -15,6 +15,24 @@ function writeUserData(userId, name, email, city) {
   });
 } 
 
+function setNumberffDailyAcesses() {
+  fetch('http://localhost:4000/set_access_count')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+  })
+  .catch(error => {
+    alert('Error: ' + error.message);
+    // Handle errors during the fetch or parsing of the response
+    console.error('Error fetching data:', error);
+  });
+}
+
+
 export function GoogleLogin(){
   const router = useRouter();
   const [isGoogleHover, setIsGoogleHover] = React.useState(false);
@@ -30,6 +48,7 @@ export function GoogleLogin(){
       // const user = result.user;
       // IdP data available using getAdditionalUserInfo(result)
       //writeUserData(result.user.uid, result.user.email, result.user.email, "No City");
+      setNumberffDailyAcesses();
       router.push('./mainpage/main');
     }).catch((error) => {
       // Handle Errors here.
@@ -66,6 +85,7 @@ export function GitHubLogin(){
     .then((result) => {
       // ...
       //writeUserData(result.user.uid, result.user.email, result.user.email, "No City");  
+    setNumberffDailyAcesses();
     router.push('./mainpage/main');
   }).catch((error) => {
     // Handle Errors here.
@@ -107,6 +127,7 @@ export function SignUp(){
       .then((userCredential) => {
         // Signed up 
         //writeUserData(userCredential.user.uid, userCredential.user.email, userCredential.user.email, "No City");  
+        setNumberffDailyAcesses();
         router.push('./mainpage/main');
       })
       .catch((error) => {
@@ -165,6 +186,7 @@ export function SignIn() {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in 
+        setNumberffDailyAcesses();
         router.push('./mainpage/main');
       })
       .catch((error) => {
